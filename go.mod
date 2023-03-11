@@ -1,7 +1,7 @@
-modulo github.com/livingstone23/twittor
+module github.com/livingstone23/twittor
 
-go 1.20.1
+go 1.23
 
 require (
-    
+
 )
