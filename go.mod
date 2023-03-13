@@ -1,4 +1,4 @@
-module github.com/livingstone23/twittor
+module github.com/twittor
 
 go 1.23
 
