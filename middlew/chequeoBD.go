@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+/*ChequeoBD: permite revisar la conexion a la base de datos*/
 func ChequeoBD(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if bd.ChequeoConnection() == 0 {
@@ -13,5 +14,4 @@ func ChequeoBD(next http.HandlerFunc) http.HandlerFunc {
 		}
 		next.ServeHTTP(w, r)
 	}
-
 }
