@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"time"
 
-	"git/twittor/models"
 	"git/twittor/bd"
 	"git/twittor/jwt"
+	"git/twittor/models"
 )
 
 /*Login realiza el login*/
@@ -18,26 +18,26 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	err := json.NewDecoder(r.Body).Decode(&t)
 	if err != nil {
-		http.Error(w, "Usuario y/o Contraseña inválidos LCANO100"+err.Error(), 400)
+		http.Error(w, "Usuario y/o Contraseña inválidos "+err.Error(), 400)
 		return
 	}
 
 	if len(t.Email) == 0 {
-		http.Error(w, "El email del usuario es requerido  LCANO200", 400)
+		http.Error(w, "El email del usuario es requerido ", 400)
 		return
 	}
 
 	documento, existe := bd.IntentoLogin(t.Email, t.Password)
 
 	if existe == false {
-		http.Error(w, "Usuario y/o Contraseña inválidos LCANO300", 400)
+		http.Error(w, "Usuario y/o Contraseña inválidos ", 400)
 		return
 	}
 
 	//modulo para llamar a rutina que genera token
 	jwtKey, err := jwt.GeneroJWT(documento)
 	if err != nil {
-		http.Error(w, "Ocurrio un error al instante de generar un Token correspondiente  LCANO400"+err.Error(), 400)
+		http.Error(w, "Ocurrio un error al instante de generar un Token correspondiente"+err.Error(), 400)
 		return
 	}
 
