@@ -18,6 +18,9 @@ func Manejadores() {
 	//Ruta para el registro de usuario
 	router.HandleFunc("/registro", middlew.ChequeoBD(routers.Registro)).Methods("POST")
 
+	//Ruta para el login
+	router.HandleFunc("/login", middlew.ChequeoBD(routers.Login)).Methods("POST")
+
 	//abrimos el puerto
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
