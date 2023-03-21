@@ -21,6 +21,9 @@ func Manejadores() {
 	//Ruta para el login
 	router.HandleFunc("/login", middlew.ChequeoBD(routers.Login)).Methods("POST")
 
+	//Ruta para validar el token
+	router.HandleFunc("/verperfil", middlew.ChequeoBD(middlew.ValidoJWT(routers.VerPerfil))).Methods("GET")
+
 	//abrimos el puerto
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
