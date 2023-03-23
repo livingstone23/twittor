@@ -30,6 +30,8 @@ func Manejadores() {
 
 	router.HandleFunc("/leoTweet", middlew.ChequeoBD(middlew.ValidoJWT(routers.LeoTweets))).Methods("GET")
 
+	router.HandleFunc("/eliminarTweet", middlew.ChequeoBD(middlew.ValidoJWT(routers.EliminarTweet))).Methods("DELETE")
+
 	//abrimos el puerto
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
